@@ -28,5 +28,11 @@ pipeline {
                 bat 'docker push joshv69517/my-html-app:latest'
             }
         }
+	stage('Deploy to Kubernetes') {
+            steps {
+                bat 'kubectl apply -f deployment.yaml'
+                bat 'kubectl apply -f service.yaml'
+            } 
+        }
     }
 }
